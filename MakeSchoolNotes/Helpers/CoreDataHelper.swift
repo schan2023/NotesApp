@@ -48,9 +48,12 @@ struct CoreDataHelper {
     //Retrieve notes
     static func retrieveNotes() -> [Note] {
         do {
+            //Retrieves core data and sorts it by date
             let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
-            let results = try context.fetch(fetchRequest)
+            let sort = NSSortDescriptor(key: #keyPath(Note.modificationTime), ascending: false)
+            fetchRequest.sortDescriptors = [sort]
             
+            let results = try context.fetch(fetchRequest)
             return results
         }
         catch let error {

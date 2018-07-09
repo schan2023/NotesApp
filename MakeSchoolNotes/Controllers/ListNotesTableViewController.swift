@@ -21,6 +21,9 @@ class ListNotesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         notes = CoreDataHelper.retrieveNotes()
+        for note in notes {
+            print("1.) \(note.modificationTime)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int ) -> Int {
