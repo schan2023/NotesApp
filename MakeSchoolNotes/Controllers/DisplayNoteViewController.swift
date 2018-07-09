@@ -49,18 +49,19 @@ class DisplayNoteViewController: UIViewController {
             //optional bc it could be edited or not edited
             note?.title = titleTextField.text ?? ""
             note?.content = contentTextView.text ?? ""
+            note?.modificationTime = Date()
             
-            destination.tableView.reloadData()
+            CoreDataHelper.saveNote()
             
         case "save" where note == nil:
             //creates new note and adjusts note title and content when displaying note
-            let note = Note()
+            let note = CoreDataHelper.newNote()
             note.title = titleTextField.text ?? ""
             note.content = contentTextView.text ?? ""
             note.modificationTime = Date()
             
             //appends new note to notes array
-            destination.notes.append(note)
+            CoreDataHelper.saveNote()
             
         case "cancel":
             print("cancel button was tapped")
