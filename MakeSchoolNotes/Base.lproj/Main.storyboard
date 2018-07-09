@@ -57,6 +57,7 @@
                                 <connections>
                                     <outlet property="noteModificationTimeLabel" destination="Wml-X6-riP" id="bmu-A8-kQs"/>
                                     <outlet property="noteTitleLabel" destination="D8D-1O-ImM" id="OKN-4C-8DK"/>
+                                    <segue destination="2oU-GS-nuq" kind="show" identifier="displayNote" id="Xnl-yn-phQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -65,13 +66,19 @@
                             <outlet property="delegate" destination="u2p-Xo-LIX" id="msW-Ug-yhm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notes" id="ib0-P4-TX8"/>
+                    <navigationItem key="navigationItem" title="Notes" id="ib0-P4-TX8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YnK-MD-Pqb">
+                            <connections>
+                                <segue destination="2oU-GS-nuq" kind="show" identifier="addNote" id="3EN-wO-Nc0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXi-TP-ue3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1501.5999999999999" y="266.71664167916043"/>
         </scene>
-        <!--Display Note View Controller-->
+        <!--Title-->
         <scene sceneID="3Fn-kU-8ee">
             <objects>
                 <viewController id="2oU-GS-nuq" customClass="DisplayNoteViewController" customModule="MakeSchoolNotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,33 +86,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9fq-XG-IIZ">
-                                <rect key="frame" x="15" y="70" width="345" height="577"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="suY-a4-UEv">
+                                <rect key="frame" x="15" y="74" width="345" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VHa-1p-e7C">
+                                <rect key="frame" x="15" y="114" width="345" height="538"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="suY-a4-UEv">
-                                <rect key="frame" x="15" y="30" width="345" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9fq-XG-IIZ" firstAttribute="leading" secondItem="gXg-ap-2Xu" secondAttribute="leading" constant="15" id="4GS-D1-Mri"/>
-                            <constraint firstItem="gXg-ap-2Xu" firstAttribute="trailing" secondItem="9fq-XG-IIZ" secondAttribute="trailing" constant="15" id="PMF-Zg-5OG"/>
+                            <constraint firstItem="VHa-1p-e7C" firstAttribute="leading" secondItem="gXg-ap-2Xu" secondAttribute="leading" constant="15" id="8yz-mp-dy4"/>
+                            <constraint firstItem="VHa-1p-e7C" firstAttribute="top" secondItem="suY-a4-UEv" secondAttribute="bottom" constant="10" id="D8L-gd-d6f"/>
                             <constraint firstItem="gXg-ap-2Xu" firstAttribute="trailing" secondItem="suY-a4-UEv" secondAttribute="trailing" constant="15" id="TDx-JO-CmK"/>
-                            <constraint firstItem="gXg-ap-2Xu" firstAttribute="bottom" secondItem="9fq-XG-IIZ" secondAttribute="bottom" constant="15" id="VLS-Tc-dn8"/>
+                            <constraint firstItem="gXg-ap-2Xu" firstAttribute="bottom" secondItem="VHa-1p-e7C" secondAttribute="bottom" constant="15" id="lX7-rS-yH9"/>
                             <constraint firstItem="suY-a4-UEv" firstAttribute="leading" secondItem="gXg-ap-2Xu" secondAttribute="leading" constant="15" id="m0b-y2-ohv"/>
+                            <constraint firstItem="gXg-ap-2Xu" firstAttribute="trailing" secondItem="VHa-1p-e7C" secondAttribute="trailing" constant="15" id="mLm-Gf-KMQ"/>
                             <constraint firstItem="suY-a4-UEv" firstAttribute="top" secondItem="gXg-ap-2Xu" secondAttribute="top" constant="10" id="uxh-a0-VVs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gXg-ap-2Xu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="7oV-8u-mIR">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EWI-3g-9XE">
+                            <connections>
+                                <segue destination="Wfw-TR-LL0" kind="unwind" identifier="cancel" unwindAction="unwindWithSegue:" id="mZk-D1-h1e"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wtL-OZ-vMK">
+                            <connections>
+                                <segue destination="Wfw-TR-LL0" kind="unwind" identifier="save" unwindAction="unwindWithSegue:" id="bYr-xH-xqt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="VHa-1p-e7C" id="bKn-S5-BeN"/>
+                        <outlet property="titleTextField" destination="suY-a4-UEv" id="0Nz-fh-ZSj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPU-WK-HbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wfw-TR-LL0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2274.4000000000001" y="266.71664167916043"/>
         </scene>
@@ -128,4 +153,7 @@
             <point key="canvasLocation" x="562.39999999999998" y="266.71664167916043"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xnl-yn-phQ"/>
+    </inferredMetricsTieBreakers>
 </document>
